@@ -1,0 +1,63 @@
+.dashboard {
+  width: 50%;
+  margin: 0 auto;
+  padding: 8rem 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+
+    &-left {
+      & h2 {
+        font-weight: $bold;
+        font-size: 3.2rem;
+        color: $secondary-darker-blue;
+      }
+      & p {
+        font-weight: $medium;
+        font-size: 1.2rem;
+        color: $secondary-lighter-blue;
+      }
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      & .filter {
+        margin-right: 3rem;
+        & span {
+          display: inline-block;
+          margin-right: 2rem;
+          font-weight: $bold;
+          font-size: 1.2rem;
+        }
+
+        & img {
+          cursor: $pointer;
+        }
+      }
+
+      & button {
+        background: $primary-dark-blue;
+        border-radius: 5rem;
+        padding: 1.7rem 3.5rem 1.7rem 5.5rem;
+        color: #fff;
+        border: none;
+        position: relative;
+        cursor: $pointer;
+
+        & img {
+          position: absolute;
+          background: #fff;
+          padding: 1rem;
+          border-radius: 50%;
+          left: 1rem;
+          top: 30%;
+          transform: translateY(-20%);
+        }
+      }
+    }
+  }
+}

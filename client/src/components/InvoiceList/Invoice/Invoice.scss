@@ -1,0 +1,47 @@
+.invoice {
+  display: flex;
+  margin-top: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.219);
+  padding: 2rem 1.4rem;
+  border-radius: 1rem;
+
+  &__id,
+  &__payment-due,
+  &__client-name {
+    font-size: 1.2rem;
+  }
+
+  &__id {
+    color: $secondary-darker-blue;
+    font-weight: $bold;
+
+    & span {
+      color: #7e88c3;
+    }
+  }
+
+  &__payment-due {
+    color: $secondary-light-blue;
+    font-weight: $medium;
+  }
+
+  &__client-name {
+    font-weight: $medium;
+    color: #858bb2;
+  }
+
+  &__price {
+    font-size: 1.6rem;
+    font-weight: $bold;
+    color: $secondary-darker-blue;
+  }
+
+  & button {
+    padding: 0.9rem 2.5rem;
+    background: #33d6a01e;
+    color: #33d69f;
+    border: none;
+  }
+}

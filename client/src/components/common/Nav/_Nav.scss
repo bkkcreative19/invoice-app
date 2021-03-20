@@ -1,5 +1,5 @@
 .nav {
-  width: 11rem;
+  width: 8rem;
   height: 100vh;
   position: absolute;
   background: #373b53;
@@ -42,8 +42,8 @@
   &__theme-switcher {
     margin-top: auto;
     margin-bottom: 3rem;
-    height: 4rem;
-    width: 4rem;
+    height: 2rem;
+    width: 2rem;
     cursor: $pointer;
 
     @media only screen and (max-width: 1024px) {
@@ -80,10 +80,10 @@
 
     & img {
       border-radius: 50%;
-      height: 5rem;
-      width: 5rem;
+      height: 3rem;
+      width: 3rem;
 
-      margin-left: 25%;
+      margin-left: 28%;
 
       @media only screen and (max-width: 1024px) {
         margin: 0;
