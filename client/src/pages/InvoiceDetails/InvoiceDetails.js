@@ -74,7 +74,30 @@ const InvoiceDetails = () => {
             </div>
           </div>
         </div>
-        <div className="invoice-details__body-items">hi</div>
+        <div className="invoice-details__body-items">
+          <div className="table-head">
+            <span>Item Name</span>
+            <span>QTY.</span>
+            <span>Price</span>
+            <span>Total</span>
+          </div>
+          <div className="table-grid">
+            {invoice.items.map((item) => {
+              return (
+                <div className="table-grid__item">
+                  <span>{item.name}</span>
+                  <span>{item.quantity}</span>
+                  <span>${item.price}.00</span>
+                  <span>${item.total}.00</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="total-price">
+          <span>Amout Due</span>
+          <span>${invoice.total}.00</span>
+        </div>
       </div>
     </div>
   );

@@ -67,6 +67,7 @@
 
   &__body {
     @include box-shadow;
+    @include border-radius;
     padding: 5rem;
     &-info {
       & .top {
@@ -149,7 +150,7 @@
           }
 
           & .actual-address {
-            margin-top: 0.8rem;
+            margin-top: 1.2rem;
             & span {
               font-size: 1.1rem;
               font-weight: $medium;
@@ -182,7 +183,89 @@
     }
 
     &-items {
-      background: #f9fafe;
+      background: #97979710;
+      margin-top: 4rem;
+      padding: 3rem;
+      @include border-radius;
+
+      & .table-head {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr;
+
+        & span {
+          font-size: 1.2rem;
+          font-weight: $medium;
+          color: $secondary-lighter-blue;
+        }
+        & span:last-child {
+          text-align: right;
+        }
+        & span:nth-child(3) {
+          text-align: center;
+        }
+      }
+
+      & .table-grid {
+        margin-top: 4.5rem;
+
+        &__item:not(:first-child) {
+          margin-top: 3rem;
+        }
+
+        &__item {
+          display: grid;
+          grid-template-columns: 3fr 1fr 1fr 1fr;
+
+          & span {
+            font-size: 1.3rem;
+          }
+          & span:last-child {
+            text-align: right;
+          }
+
+          & span:nth-child(2) {
+            margin-left: 1.3rem;
+          }
+
+          & span:nth-child(3) {
+            text-align: center;
+          }
+          & span:first-child,
+          & span:last-child {
+            color: $secondary-darker-blue;
+            font-weight: $bold;
+          }
+          & span:nth-child(2),
+          & span:nth-child(3) {
+            color: $secondary-light-blue;
+            font-weight: $bold;
+          }
+
+          // & span:nth-child(2) {
+          //   margin-left: 0.7rem;
+          // }
+        }
+      }
+    }
+    & .total-price {
+      background: #373b53;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      padding: 3rem;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      span:first-child {
+        font-size: 1.1rem;
+        font-weight: $medium;
+      }
+
+      & span:last-child {
+        font-size: 2.4rem;
+        font-weight: $bold;
+      }
     }
   }
 }
