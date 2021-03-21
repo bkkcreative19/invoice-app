@@ -5,7 +5,7 @@ import InvoiceList from "../../components/InvoiceList/InvoiceList";
 
 const Dashboard = () => {
   return (
-    <section className="dashboard">
+    <section className="dashboard container">
       <div className="dashboard__header">
         <div className="dashboard__header-left">
           <h2>Invoices</h2>

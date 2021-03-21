@@ -1,16 +1,22 @@
 .invoice {
-  display: flex;
-  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: (0.6fr 1fr 1fr 1fr 0.8fr 0.1fr);
+  gap: 2.3rem;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.219);
-  padding: 2rem 1.4rem;
-  border-radius: 1rem;
+  margin-top: 2.5rem;
+  @include box-shadow;
+  padding: 2rem 3rem;
+  @include border-radius;
+  transition: all 650ms;
+
+  &:hover {
+    border: 1px solid $primary-dark-blue;
+  }
 
   &__id,
   &__payment-due,
   &__client-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   &__id {
@@ -30,18 +36,30 @@
   &__client-name {
     font-weight: $medium;
     color: #858bb2;
+    text-align: center;
   }
 
   &__price {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: $bold;
     color: $secondary-darker-blue;
+    text-align: end;
   }
 
   & button {
-    padding: 0.9rem 2.5rem;
+    padding: 1.2rem 1rem;
     background: #33d6a01e;
     color: #33d69f;
     border: none;
+    margin-left: 1rem;
   }
+
+  &__arrow {
+    justify-self: flex-end;
+  }
+
+  // & button,
+  // &__arrow {
+  //   justify-self: flex-end;
+  // }
 }

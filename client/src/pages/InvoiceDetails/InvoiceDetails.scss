@@ -1,0 +1,188 @@
+.invoice-details {
+  padding: 8rem 0 0;
+
+  &__go-back {
+    & span {
+      display: inline-block;
+      margin-left: 1.4rem;
+      font-size: 1.2rem;
+      font-weight: $bold;
+      color: $secondary-darker-blue;
+    }
+  }
+
+  &__head {
+    @include box-shadow;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    padding: 2.5rem;
+    @include border-radius;
+
+    &-pending {
+      & span {
+        font-size: 1.2rem;
+        font-weight: $medium;
+        color: #858bb2;
+      }
+
+      & button {
+        padding: 1.6rem 2rem;
+        background: #ff910010;
+        color: #ff8f00;
+        border: none;
+        margin-left: 1.3rem;
+      }
+    }
+
+    &-options {
+      margin-left: auto;
+
+      & button {
+        border-radius: 10rem;
+        padding: 1.6rem 2rem;
+        border: none;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: $bold;
+        cursor: $pointer;
+      }
+
+      & button:nth-child(1) {
+        color: #979797;
+      }
+
+      & button:nth-child(2) {
+        background: #ec5757;
+      }
+      & button:nth-child(3) {
+        background: $primary-dark-blue;
+      }
+
+      & button:not(:last-child) {
+        margin-right: 1.2rem;
+      }
+    }
+  }
+
+  &__body {
+    @include box-shadow;
+    padding: 5rem;
+    &-info {
+      & .top {
+        display: flex;
+        justify-content: space-between;
+        & .send-address {
+          text-align: end;
+          & span {
+            display: block;
+            color: $secondary-light-blue;
+            font-size: 1.1rem;
+            font-weight: $medium;
+          }
+
+          & span:not(:first-child) {
+            margin-top: 0.7rem;
+          }
+        }
+
+        & .head {
+          & span {
+            font-size: 1.6rem;
+            font-weight: $bold;
+            color: $secondary-darker-blue;
+
+            & span {
+              color: $secondary-lighter-blue;
+            }
+          }
+          & p {
+            margin-top: 1.3rem;
+            font-size: 1.2rem;
+            font-weight: $medium;
+            color: $secondary-light-blue;
+          }
+        }
+      }
+
+      & .bottom {
+        display: flex;
+        margin-top: 4rem;
+
+        & .dates {
+          & div {
+            & span {
+              font-size: 1.2rem;
+              font-weight: $medium;
+              color: $secondary-lighter-blue;
+            }
+            & p {
+              font-size: 1.5rem;
+              font-weight: $bold;
+              color: $secondary-darker-blue;
+              margin-top: 1.2rem;
+            }
+          }
+
+          & div:last-child {
+            margin-top: 3rem;
+          }
+        }
+
+        & .client-address {
+          margin-left: 10rem;
+
+          & span {
+            display: block;
+          }
+
+          & span:first-child {
+            font-size: 1.2rem;
+            font-weight: $medium;
+            color: $secondary-lighter-blue;
+          }
+          & span:nth-child(2) {
+            font-size: 1.5rem;
+            font-weight: $bold;
+            color: $secondary-darker-blue;
+            margin-top: 1.2rem;
+          }
+
+          & .actual-address {
+            margin-top: 0.8rem;
+            & span {
+              font-size: 1.1rem;
+              font-weight: $medium;
+              color: $secondary-lighter-blue;
+              margin-top: 0.7rem;
+            }
+          }
+        }
+
+        & .client-email {
+          margin-left: 8rem;
+
+          & span {
+            display: block;
+          }
+
+          & span:first-child {
+            font-size: 1.2rem;
+            font-weight: $medium;
+            color: $secondary-lighter-blue;
+          }
+          & span:nth-child(2) {
+            font-size: 1.5rem;
+            font-weight: $bold;
+            color: $secondary-darker-blue;
+            margin-top: 1.2rem;
+          }
+        }
+      }
+    }
+
+    &-items {
+      background: #f9fafe;
+    }
+  }
+}

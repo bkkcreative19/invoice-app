@@ -16,3 +16,12 @@ body {
   position: relative;
   background: $tertiary-light-bg;
 }
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}

@@ -26,3 +26,11 @@ $bold: 700;
 
 // utils
 $pointer: pointer;
+
+// mixins
+@mixin box-shadow {
+  box-shadow: 0 0.2rem 2rem rgba(173, 166, 166, 0.219);
+}
+@mixin border-radius {
+  border-radius: 1rem;
+}
