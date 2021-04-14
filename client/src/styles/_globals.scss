@@ -25,3 +25,14 @@ a {
   width: 50%;
   margin: 0 auto;
 }
+
+.light-theme {
+  .background-color {
+    color: red;
+  }
+}
+.dark-theme {
+  .background-color {
+    color: black;
+  }
+}

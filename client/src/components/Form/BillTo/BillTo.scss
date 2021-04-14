@@ -1,0 +1,51 @@
+.bill-to {
+  margin-top: 5rem;
+
+  &__client-name {
+    margin-top: 3rem;
+  }
+
+  &__client-name,
+  &__client-email,
+  &__street-address {
+    margin-bottom: 1.6rem;
+    & input {
+      width: 100%;
+    }
+  }
+
+  &__location {
+    display: flex;
+    gap: 2rem;
+
+    & input {
+      width: 100%;
+    }
+  }
+
+  &__invoice {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
+
+    & div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .payment-terms {
+      & select {
+        // margin-top: 0.9rem;
+        height: 100%;
+      }
+    }
+  }
+
+  & .project-description {
+    margin-top: 2.5rem;
+    & input {
+      width: 100%;
+    }
+  }
+}

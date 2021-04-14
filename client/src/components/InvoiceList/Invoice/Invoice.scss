@@ -48,8 +48,7 @@
 
   & button {
     padding: 1.2rem 1rem;
-    background: #33d6a01e;
-    color: #33d69f;
+
     border: none;
     margin-left: 1rem;
   }
@@ -62,4 +61,17 @@
   // &__arrow {
   //   justify-self: flex-end;
   // }
+}
+
+.paid {
+  background: #33d6a01e !important;
+  color: #33d69f !important;
+}
+.pending {
+  background: rgba(255, 143, 0, 0.06) !important;
+  color: #ff8f00 !important;
+}
+.draft {
+  background: rgba(55, 59, 83, 0.06) !important;
+  color: #373b53 !important;
 }

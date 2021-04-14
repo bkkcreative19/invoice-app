@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./main.scss";
 import Nav from "./components/common/Nav/Nav";
 import { Switch, Route } from "react-router-dom";
@@ -6,10 +7,12 @@ import { InvoiceProvider } from "./context/InvoiceContext";
 import InvoiceDetails from "./pages/InvoiceDetails/InvoiceDetails";
 
 const App = () => {
+  const [isLightTheme, setIsLightTheme] = useState(true);
+
   return (
     <InvoiceProvider>
-      <Nav />
-      <div className="App">
+      <div className={isLightTheme ? "light-theme" : "dark-theme"}>
+        <Nav />
         <Switch>
           <Route exact path="/">
             <Dashboard />

@@ -1,0 +1,24 @@
+.bill-from {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__address {
+    margin: 2.5rem 0;
+
+    & input {
+      width: 100%;
+    }
+  }
+
+  &__location {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+
+    & input {
+      width: 100%;
+    }
+  }
+}

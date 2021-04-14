@@ -2,6 +2,8 @@ import React from "react";
 import rightArrow from "../../../assets/icon-arrow-right.svg";
 
 const Invoice = ({ invoice }) => {
+  const status =
+    invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1);
   return (
     <div className="invoice">
       <span className="invoice__id">
@@ -11,7 +13,7 @@ const Invoice = ({ invoice }) => {
       <span className="invoice__payment-due">Due {invoice.paymentDue}</span>
       <span className="invoice__client-name">{invoice.clientName}</span>
       <span className="invoice__price">${invoice.total}</span>
-      <button>{invoice.status}</button>
+      <button className={invoice.status}>{status}</button>
       <img className="invoice__arrow" src={rightArrow} alt="right-arrow" />
     </div>
   );

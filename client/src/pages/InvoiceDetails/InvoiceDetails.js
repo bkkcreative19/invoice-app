@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { data } from "../../data";
 import { useParams, Link } from "react-router-dom";
 import backArrow from "../../assets/icon-arrow-left.svg";
+import { InvoiceContext } from "../../context/InvoiceContext";
 
 const InvoiceDetails = () => {
+  const { isOpen, setIsOpen } = useContext(InvoiceContext);
   const params = useParams();
   const [invoice, setInvoice] = useState(
     data.find((item) => item.id === params.id)
   );
+  console.log(params);
+  const [isPaided, setIsPaided] = useState(invoice.status === "paid");
+  const status =
+    invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1);
 
   return (
-    <div className="invoice-details container">
+    <div
+      className="invoice-details container"
+      style={{ background: "background-color " }}
+    >
       <Link to="/">
         <div className="invoice-details__go-back">
           <img src={backArrow} alt="back-arrow" />
@@ -20,12 +29,25 @@ const InvoiceDetails = () => {
       <div className="invoice-details__head">
         <div className="invoice-details__head-pending">
           <span>Status</span>
-          <button>{invoice.status}</button>
+          <button className={invoice.status}>{status}</button>
         </div>
         <div className="invoice-details__head-options">
-          <button className="edit">Edit</button>
-          <button className="delete">Delete</button>
-          <button className="paid">Mark as Paid</button>
+          {isPaided ? (
+            <>
+              <button className="delete">Delete</button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => setIsOpen(true)} className="edit">
+                Edit
+              </button>
+              <button className="delete">Delete</button>
+              <button className="mark-paid">Mark as Paid</button>
+            </>
+          )}
+          {/* <button className="edit">Edit</button>
+
+          <button className="paid">Mark as Paid</button> */}
         </div>
       </div>
 
