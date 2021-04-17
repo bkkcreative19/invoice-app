@@ -1,15 +1,31 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
+import { nanoid } from "nanoid";
 
 import { withRouter } from "react-router-dom";
 import { InvoiceContext } from "../../context/InvoiceContext";
-import SelectInput from "../common/SelectInput/SelectInput";
-import TextField from "../common/TextField/TextField";
-// import BillFrom from "./BillFrom/BillFrom";
-// import BillTo from "./BillTo/BillTo";
+import axios from "axios";
+import ItemList from "./ItemList/ItemList";
+import BillFrom from "./BillFrom/BillFrom";
+import BillTo from "./BillTo/BillTo";
 
 const Form = (props) => {
   const { setIsOpen } = useContext(InvoiceContext);
+  console.log();
   const testt = props.location.pathname.slice(9);
+  const [items, setItems] = useState([
+    {
+      name: "Banner Design",
+      quantity: 1,
+      price: 156.0,
+      total: 156.0,
+    },
+    {
+      name: "Email Design",
+      quantity: 2,
+      price: 200.0,
+      total: 400.0,
+    },
+  ]);
   const [billFrom, setBillFrom] = useState({
     streetAddress: "",
     city: "",
@@ -28,35 +44,33 @@ const Form = (props) => {
     projectDescription: "",
   });
 
-  const initValues = {
-    billFrom: {
-      streetAddress: "",
-      city: "",
-      postalCode: "",
-      country: "",
-    },
-    billTo: {
-      clientName: "",
-      clientEmail: "",
-      streetAddress: "",
-      city: "",
-      postalCode: "",
-      country: "",
-      invoiceDate: "",
-      paymentTerms: "",
-      projectDescription: "",
-    },
+  const handleSend = async () => {
+    const obj = {
+      id: nanoid(6).toUpperCase(),
+      clientName: billTo.clientName,
+      clientEmail: billTo.clientEmail,
+      description: billTo.projectDescription,
+      paymentTerms: billTo.paymentTerms,
+      status: "pending",
+      senderAddress: {
+        street: billFrom.streetAddress,
+        city: billFrom.city,
+        postCode: billFrom.postalCode,
+        country: billFrom.country,
+      },
+      clientAddress: {
+        street: billTo.streetAddress,
+        city: billTo.city,
+        postCode: billTo.postalCode,
+        country: billTo.country,
+      },
+      items,
+      total: 14002.33,
+    };
+    const { data } = await axios.post("/api/new-invoice", obj);
+    console.log(data);
   };
 
-  const handleSend = () => {
-    console.log();
-    console.log(billTo);
-  };
-
-  function handleSubmit(e, isValid) {
-    console.log(e);
-  }
-  const handleDraft = () => {};
   return (
     <div className="form">
       {testt.length > 0 ? (
@@ -69,161 +83,20 @@ const Form = (props) => {
       )}
 
       <div className="form__container">
-        <div className="bill-from">
-          <h3>Bill From</h3>
-          <TextField
-            htmlFor="streetAddress"
-            label="Street Address"
-            className="bill-from__address"
-          />
-          {/* <div className="bill-from__address">
-            <label htmlFor="streetAddress">Street Address</label>
-            <input
-              type="text"
-              // value={billFrom.streetAddress}
-            />
-          </div> */}
-          <div className="bill-from__location">
-            <TextField
-              htmlFor="city"
-              label="City"
-              className="bill-from__location-postalCode"
-            />
-            <TextField
-              htmlFor="postalCode"
-              label="Post Code"
-              className="bill-from__location-postalCode"
-            />
-            <TextField
-              htmlFor="country"
-              label="Country"
-              className="bill-from__location-country"
-            />
-
-            {/* <div className="bill-from__location-city">
-              <label htmlFor="city">City</label>
-              <input
-                type="text"
-                // value={billFrom.city}
-              />
-            </div> */}
-            {/* <div className="bill-from__location-postalCode">
-              <label htmlFor="postalCode">Post Code</label>
-              <input name="postalCode" type="text" />
-            </div>
-            <div className="bill-from__location-country">
-              <label htmlFor="country">Country</label>
-              <input name="country" id="country" type="text" />
-            </div> */}
-          </div>
-        </div>
-        <div className="bill-to">
-          <h3>Bill To</h3>
-          <TextField
-            htmlFor="client-name"
-            label="Client's Name"
-            className="bill-to__client-name"
-          />
-          <TextField
-            htmlFor="client-email"
-            label="Client's Email"
-            className="bill-to__client-email"
-          />
-          <TextField
-            htmlFor="client-street-address"
-            label="Street Address"
-            className="bill-to__street-address"
-          />
-          {/* <div className="bill-to__client-name">
-            <label htmlFor="client-name">Client's Name</label>
-            <input type="text" />
-          </div>
-          <div className="bill-to__client-email">
-            <label htmlFor="client-email">Client's Email</label>
-            <input type="text" />
-          </div>
-          <div className="bill-to__street-address">
-            <label htmlFor="street-address">Street Address</label>
-            <input type="text" />
-          </div> */}
-          <div className="bill-to__location">
-            <TextField
-              htmlFor="client-city"
-              label="City"
-              className="bill-to__location-city"
-            />
-            <TextField
-              htmlFor="client-postalCode"
-              label="Post Code"
-              className="bill-to__location-postalCode"
-            />
-            <TextField
-              htmlFor="client-country"
-              label="Country"
-              className="bill-to__location-country"
-            />
-            {/* <div className="bill-to__location-city">
-              <label htmlFor="city">City</label>
-              <input id="City" type="text" />
-            </div>
-            <div className="bill-to__location-postalCode">
-              <label htmlFor="postalCode">Post Code</label>{" "}
-              <input type="text" />
-            </div>
-            <div className="bill-to__location-country">
-              <label htmlFor="country">Country</label>
-              <input id="country" type="text" />
-            </div> */}
-          </div>
-          <div className="bill-to__invoice">
-            <TextField
-              htmlFor="client-date"
-              label="Invoice Date"
-              className="date"
-              type="date"
-            />
-
-            {/* <div className="date">
-              <label htmlFor="">Invoice Date</label>
-              <input type="date" name="" id="" />
-            </div> */}
-            <SelectInput
-              htmlFor="payment-terms"
-              className="payment-terms"
-              label="Payment Terms"
-            />
-          </div>
-
-          <TextField
-            htmlFor="project-description"
-            label="Project Description"
-            className="project-description"
-          />
-          <div className="item-list"></div>
-        </div>
-        {/* <BillFrom
-          register={register}
-          setBillFrom={setBillFrom}
-          billFrom={billFrom}
-        /> */}
-        {/* <BillTo register={register} setBillTo={setBillTo} billTo={billTo} /> */}
+        <BillFrom setBillFrom={setBillFrom} billFrom={billFrom} />
+        <BillTo setBillTo={setBillTo} billTo={billTo} />
+        <ItemList />
       </div>
-      {testt.length > 0 ? (
-        <div className="edit-buttons">
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-          <button>Save Changes</button>
+
+      <div className="create-buttons">
+        <button onClick={() => setIsOpen(false)} className="discard">
+          Discard
+        </button>
+        <div className="save">
+          <button>Save as Draft</button>
+          <button onClick={handleSend}>Save & Send</button>
         </div>
-      ) : (
-        <div className="create-buttons">
-          <button onClick={() => setIsOpen(false)} className="discard">
-            Discard
-          </button>
-          <div className="save">
-            <button onClick={handleDraft}>Save as Draft</button>
-            <button>Save & Send</button>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

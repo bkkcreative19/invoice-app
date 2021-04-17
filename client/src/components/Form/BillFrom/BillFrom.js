@@ -1,45 +1,60 @@
 import React from "react";
+import TextField from "../../common/TextField/TextField";
 
-const BillFrom = ({ setBillFrom, billFrom, register }) => {
-  // const billFrom = state.billFrom;
-  // console.log(billFrom);
+const BillFrom = ({ setBillFrom, billFrom }) => {
   return (
     <div className="bill-from">
       <h3>Bill From</h3>
-      <div className="bill-from__address">
-        <label htmlFor="streetAddress">Street Address</label>
-        <input
-          {...register("billFrom.streetAddress", "text")}
-          type="text"
-          // value={billFrom.streetAddress}
-        />
-      </div>
+      <TextField
+        htmlFor="streetAddress"
+        value={billFrom.streetAddress}
+        label="Street Address"
+        className="bill-from__address"
+        onChange={(e) =>
+          setBillFrom((prev) => ({
+            ...prev,
+            streetAddress: e,
+          }))
+        }
+      />
+
       <div className="bill-from__location">
-        <div className="bill-from__location-city">
-          <label htmlFor="city">City</label>
-          <input
-            {...register("billFrom.city", "text")}
-            type="text"
-            // value={billFrom.city}
-          />
-        </div>
-        <div className="bill-from__location-postalCode">
-          <label htmlFor="postalCode">Post Code</label>
-          <input
-            name="postalCode"
-            type="text"
-            {...register("billFrom.postalCode", "text")}
-          />
-        </div>
-        <div className="bill-from__location-country">
-          <label htmlFor="country">Country</label>
-          <input
-            name="country"
-            id="country"
-            type="text"
-            {...register("billFrom.country", "text")}
-          />
-        </div>
+        <TextField
+          value={billFrom.city}
+          htmlFor="city"
+          label="City"
+          className="bill-from__location-city"
+          onChange={(e) =>
+            setBillFrom((prev) => ({
+              ...prev,
+              city: e,
+            }))
+          }
+        />
+        <TextField
+          value={billFrom.postalCode}
+          htmlFor="postalCode"
+          label="Post Code"
+          className="bill-from__location-postalCode"
+          onChange={(e) =>
+            setBillFrom((prev) => ({
+              ...prev,
+              postalCode: e,
+            }))
+          }
+        />
+        <TextField
+          value={billFrom.country}
+          htmlFor="country"
+          label="Country"
+          className="bill-from__location-country"
+          onChange={(e) =>
+            setBillFrom((prev) => ({
+              ...prev,
+              country: e,
+            }))
+          }
+        />
       </div>
     </div>
   );

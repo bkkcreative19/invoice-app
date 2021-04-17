@@ -2,61 +2,76 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 let invoiceSchema = new Schema(
   {
-    billFrom: {
-      streetAddress: {
+    id: {
+      type: String,
+    },
+    clientName: {
+      type: String,
+      required: false,
+    },
+    clientEmail: {
+      type: String,
+      required: false,
+    },
+    description: {
+      type: String,
+      required: false,
+    },
+    paymentTerms: {
+      type: Number,
+      required: false,
+    },
+    paymentDue: {
+      type: String,
+      required: false,
+    },
+    status: {
+      type: String,
+      required: false,
+    },
+    senderAddress: {
+      street: {
         type: String,
-        required: true,
+        required: false,
       },
       city: {
         type: String,
-        required: true,
+        required: false,
       },
-      postalCode: {
+      postCode: {
         type: String,
-        required: true,
+        required: false,
       },
       country: {
         type: String,
-        required: true,
+        required: false,
       },
     },
-    billTo: {
-      clientName: {
+    clientAddress: {
+      street: {
         type: String,
-        required: true,
-      },
-      clientEmail: {
-        type: String,
-        required: true,
-      },
-      streetAddress: {
-        type: String,
-        required: true,
+        required: false,
       },
       city: {
         type: String,
-        required: true,
+        required: false,
       },
-      postalCode: {
+      postCode: {
         type: String,
-        required: true,
+        required: false,
       },
       country: {
         type: String,
-        required: true,
+        required: false,
       },
-      invoiceDate: {
-        type: String,
-        required: true,
-      },
-      paymentTerms: {
-        type: String,
-        required: true,
-      },
-      projectDescription: {
-        type: String,
-        required: true,
-      },
+    },
+    items: {
+      type: Array,
+      required: false,
+    },
+    total: {
+      type: Number,
+      required: false,
     },
   },
   {

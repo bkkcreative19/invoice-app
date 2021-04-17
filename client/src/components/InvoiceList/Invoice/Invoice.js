@@ -12,7 +12,7 @@ const Invoice = ({ invoice }) => {
       </span>
       <span className="invoice__payment-due">Due {invoice.paymentDue}</span>
       <span className="invoice__client-name">{invoice.clientName}</span>
-      <span className="invoice__price">${invoice.total}</span>
+      <span className="invoice__price">${500}</span>
       <button className={invoice.status}>{status}</button>
       <img className="invoice__arrow" src={rightArrow} alt="right-arrow" />
     </div>
